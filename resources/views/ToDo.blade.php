@@ -10,11 +10,11 @@
                 </div>
                 <div class="panel-body">
                   <ul class="list-group">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Cras justo odio</li>
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Dapibus ac facilisis in</li>
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Morbi leo risus</li>
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Porta ac consectetur ac</li>
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Vestibulum at eros</li>
                  </ul>
                 </div>
             </div>
@@ -25,14 +25,18 @@
      <div class="modal-content">
       <div class="modal-header">
          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h4 class="modal-title">Add Notes</h4>
+         <h4 class="modal-title" id="title">Add Notes</h4>
       </div>
        <div class="modal-body">
-        <p>Text here</p>
+        <p>
+         <input type="text" placeholder="Write some thing" id="Aitem" class="form-control">
+        </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="display:none">Close</button>
+        <button type="button" class="btn btn-warning"id="delete" style="display:none">Delete</button>
+        <button type="button" class="btn btn-primary" id="save_changes" style="display:none">Save changes</button>
+        <button type="button" class="btn btn-primary" id="A_Button">Add Notes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -41,3 +45,28 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--Javascript library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+ // ajax Code
+ $(document).ready(function(){
+     // click event on the basis of class of list-item
+     // for each
+       $('.o_item').each(function(){
+            
+            $(this).click(function(event){
+                   // getting the text of list item on the basis of id
+                   var text = $(this).text();
+                   // changing the title
+                    $('#title').text('Edit Notes');
+                   // displaying lis-item text in the modal text box via id
+                   $('#Aitem').val(text);
+                   // Displaying delete button
+                   $('#delete').show('400');
+                   // Displaying save changes Button
+                   $('#save_changes').show('400');
+                   //hiding the add notes button
+                   $('#A_Button').hide('400');
+                   console.log(text);
+            });
+       });
+ });
+</script>

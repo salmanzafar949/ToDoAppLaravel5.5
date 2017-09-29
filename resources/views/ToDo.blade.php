@@ -94,12 +94,20 @@
        $('#A_Button').click(function(event){
 
          var text = $('#Aitem').val();
+         
+         if(text != "")
+         {
          //Posting the data via post Method
          // passing text and a variable text
           $.post('AddNotes', {'text': text, '_token':$('input[name=_token]').val()} , function(data){
-             
-              console.log(data);
+            console.log(data);
           });
+         }
+         else
+         {
+           alert("Enter Something");
+         }
+
          
 
        });

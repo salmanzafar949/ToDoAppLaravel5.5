@@ -96,7 +96,7 @@
          var text = $('#Aitem').val();
          //Posting the data via post Method
          // passing text and a variable text
-          $.post('AddNotes', {'text': text, '_token':$('input[name=_token]').val()}, function(data){
+          $.post('AddNotes', {'text': text, '_token':$('input[name=_token]').val()} , function(data){
              
               console.log(data);
           });

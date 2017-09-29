@@ -41,6 +41,8 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!-- Csrf_token-->
+{{ csrf_field() }}
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--Javascript library -->
@@ -69,12 +71,12 @@
             });
        });
 
-       // buttonclick event for nadd new notes
+       // buttonclick event for Plus icon add new notes
 
         $('#Add_Notes').click(function(event){
                    
                    // changing the title
-                    $('#title').text('Add Notes');
+                   $('#title').text('Add Notes');
                    // displaying lis-item text in the modal text box via id
                    $('#Aitem').val("");
                    // Displaying delete button
@@ -83,8 +85,23 @@
                    $('#save_changes').hide('400');
                    //hiding the add notes button
                    $('#A_Button').show('400');
-                   console.log(text);
+                   //console.log(text);
             
+       });
+
+       // button click event for add new Notes Modal
+
+       $('#A_Button').click(function(event){
+
+         var text = $('#Aitem').val();
+         //Posting the data via post Method
+         // passing text and a variable text
+          $.post('AddNotes', {'text': text, '_token':$('input[name=_token]').val()}, function(data){
+             
+              console.log(data);
+          });
+         
+
        });
  });
 </script>

@@ -15,8 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Notes', function(){
- 
-    return view('Todo');
-
-});
+Route::get('/Notes', 'NotesController@index');
+Route::post('/AddNotes', 'NotesController@create');

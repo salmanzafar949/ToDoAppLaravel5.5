@@ -6,7 +6,7 @@
          <div class="col-lg-offset-3 col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">ToDo List <a href="#" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+                    <h3 class="panel-title">ToDo List <a href="#" id="Add_Notes" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
                 </div>
                 <div class="panel-body">
                   <ul class="list-group">
@@ -67,6 +67,24 @@
                    $('#A_Button').hide('400');
                    console.log(text);
             });
+       });
+
+       // buttonclick event for nadd new notes
+
+        $('#Add_Notes').click(function(event){
+                   
+                   // changing the title
+                    $('#title').text('Add Notes');
+                   // displaying lis-item text in the modal text box via id
+                   $('#Aitem').val("");
+                   // Displaying delete button
+                   $('#delete').hide('400');
+                   // Displaying save changes Button
+                   $('#save_changes').hide('400');
+                   //hiding the add notes button
+                   $('#A_Button').show('400');
+                   console.log(text);
+            
        });
  });
 </script>

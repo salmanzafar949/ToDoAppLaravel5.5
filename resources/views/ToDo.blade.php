@@ -72,9 +72,8 @@
        });
 
        // buttonclick event for Plus icon add new notes
-
-        $('#Add_Notes').click(function(event){
-                   
+        $(document).on('click', function(event){
+            
                    // changing the title
                    $('#title').text('Add Notes');
                    // displaying lis-item text in the modal text box via id

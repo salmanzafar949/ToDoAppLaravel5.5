@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">ToDo List <a href="#" id="Add_Notes" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" id="datatodisplay">
                   <ul class="list-group">
                   @forelse($Notes as $note)
                   <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
@@ -36,7 +36,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal" style="display:none">Close</button>
         <button type="button" class="btn btn-warning"id="delete" style="display:none">Delete</button>
         <button type="button" class="btn btn-primary" id="save_changes" style="display:none">Save changes</button>
-        <button type="button" class="btn btn-primary" id="A_Button">Add Notes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="A_Button">Add Notes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -101,6 +101,8 @@
          // passing text and a variable text
           $.post('AddNotes', {'text': text, '_token':$('input[name=_token]').val()} , function(data){
             console.log(data);
+            // refreshing the div
+            $('#datatodisplay').load(location.href + ' #datatodisplay');
           });
          }
          else

@@ -51,9 +51,25 @@
  // ajax Code
  $(document).ready(function(){
      // click event on the basis of class of list-item
+
+       $(document).on('click', '.o_item', function(event){
+                 // getting the text of list item on the basis of id
+                   var text = $(this).text();
+                   // changing the title
+                    $('#title').text('Edit Notes');
+                   // displaying lis-item text in the modal text box via id
+                   $('#Aitem').val(text);
+                   // Displaying delete button
+                   $('#delete').show('400');
+                   // Displaying save changes Button
+                   $('#save_changes').show('400');
+                   //hiding the add notes button
+                   $('#A_Button').hide('400');
+                   console.log(text);
+       });
+
      // for each
-       $('.o_item').each(function(){
-            
+       /* $('.o_item').each(function(){
             $(this).click(function(event){
                    // getting the text of list item on the basis of id
                    var text = $(this).text();
@@ -68,11 +84,11 @@
                    //hiding the add notes button
                    $('#A_Button').hide('400');
                    console.log(text);
-            });
-       });
+            }); */
+       //});
 
        // buttonclick event for Plus icon add new notes
-        $(document).on('click', function(event){
+        $(document).on('click', '#Aitem', function(event){
             
                    // changing the title
                    $('#title').text('Add Notes');

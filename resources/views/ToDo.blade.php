@@ -11,7 +11,8 @@
                 <div class="panel-body" id="datatodisplay">
                   <ul class="list-group">
                   @forelse($Notes as $note)
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
+                   <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
+                   <input type="hidden" id="itemid" value="{{ $note->id}}">
                  @empty
                            <h1> No Notes Found Add now <a href="#" id="Add_Notes" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
                  @endforelse
@@ -29,6 +30,7 @@
       </div>
        <div class="modal-body">
         <p>
+         <input type="hidden" id="id">
          <input type="text" placeholder="Write some thing" id="Aitem" class="form-control">
         </p>
       </div>
@@ -44,7 +46,11 @@
 <!-- Csrf_token-->
 {{ csrf_field() }}
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{{--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  --}}
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 <!--Javascript library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -55,6 +61,9 @@
        $(document).on('click', '.o_item', function(event){
                  // getting the text of list item on the basis of id
                    var text = $(this).text();
+                   // getting the id from the outitem input field
+                   var id = $(this).find('#itemid').val();
+                   console.log(id);
                    // changing the title
                     $('#title').text('Edit Notes');
                    // displaying lis-item text in the modal text box via id
@@ -65,7 +74,10 @@
                    $('#save_changes').show('400');
                    //hiding the add notes button
                    $('#A_Button').hide('400');
+                   // setting the id to the modal input hidden if field after getting from the ui-list itemid
+                   $('#id').val(id);
                    console.log(text);
+                   
        });
 
      // for each
@@ -126,6 +138,16 @@
          }
 
          
+
+       });
+ 
+       // function to delete items
+       $('#delete').click(function(event){
+               var id = $("#id").val();
+               //$.post('Delete', {'id':id,'_token':$('input[name=_token]').val()}, function(data){
+                     console.log(id);
+               //});
+               
 
        });
  });

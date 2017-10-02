@@ -23,5 +23,13 @@ class NotesController extends Controller
         return 'Done';
 
     }
+
+
+    // function to delete notes
+
+    public function delete(Request $r, $id)
+    {
+        return $r->all();
+    }
     
 }

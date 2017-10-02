@@ -9,7 +9,9 @@ class NotesController extends Controller
     //function return view
     public function index()
     {
-        return view('ToDo');
+        //Now returning all the data to the view
+        $Notes = Note::all();
+        return view('ToDo', compact('Notes'));
     }
     
     //function to create nnew notes

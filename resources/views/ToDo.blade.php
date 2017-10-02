@@ -10,11 +10,11 @@
                 </div>
                 <div class="panel-body">
                   <ul class="list-group">
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Cras justo odio</li>
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Dapibus ac facilisis in</li>
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Morbi leo risus</li>
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Porta ac consectetur ac</li>
-                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">Vestibulum at eros</li>
+                  @forelse($Notes as $note)
+                  <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
+                 @empty
+                           <h1> No Notes Found Add now <a href="#" id="Add_Notes" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
+                 @endforelse
                  </ul>
                 </div>
             </div>
@@ -94,7 +94,7 @@
        $('#A_Button').click(function(event){
 
          var text = $('#Aitem').val();
-         
+          
          if(text != "")
          {
          //Posting the data via post Method

@@ -29,7 +29,19 @@ class NotesController extends Controller
 
     public function delete(Request $r, $id)
     {
+        Note::where('id', $request->id)->delete();
+       // return $request->all();
+        return "Deleted";
         return $r->all();
+    }
+
+    public function update(request $request)
+    {
+        $note = Note::find($request->id);
+        $note->Task = $request->value;
+        $note->save();
+        return "Update Successfully";
+        return $request->all();
     }
     
 }

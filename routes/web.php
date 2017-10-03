@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/Notes', 'NotesController@index');
 Route::post('/AddNotes', 'NotesController@create');
 Route::post('/Delete', 'NotesController@delete');
+Route::post('/edit', 'NotesController@update');

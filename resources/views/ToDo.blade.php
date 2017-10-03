@@ -145,12 +145,25 @@
        $('#delete').click(function(event){
                var id = $("#id").val();
                $.post('Delete', {'id':id,'_token':$('input[name=_token]').val()}, function(data){
-                      $('#tasks').load(location.href + ' #tasks');
+                      $('#tasks').load(location.href + ' #datatodisplay');
                       console.log(data);
                       console.log(id);
                 });
                
 
        });
+
+       //Function to edit notes
+        $('#save_changes').click(function(event) {
+            /* Act on the event */
+            var id = $("#id").val();
+            var value = $('#Aitem').val();
+            $.post('/edit', {'id': id, 'value': value, '_token': $('input[name=_token]').val()}, function(data) {
+              /*optional stuff to do after success */
+               $('#tasks').load(location.href + ' #datatodisplay');
+             console.log(data);
+            });
+
+          });
  });
 </script>

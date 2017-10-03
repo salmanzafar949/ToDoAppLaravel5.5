@@ -134,7 +134,7 @@
          }
          else
          {
-           alert("Enter Something");
+           alert("Enter Notes or someother info");
          }
 
          

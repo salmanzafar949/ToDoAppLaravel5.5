@@ -11,8 +11,8 @@
                 <div class="panel-body" id="datatodisplay">
                   <ul class="list-group">
                   @forelse($Notes as $note)
-                   <li class="list-group-item o_item" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
-                   <input type="hidden" id="itemid" value="{{ $note->id}}">
+                   <li class="list-group-item o_item" id="Listitems" data-toggle="modal" data-target="#myModal">{{ $note->note }}</li>
+                   <input type="hidden" id="itemid" value="{{ $note->id }}">
                  @empty
                            <h1> No Notes Found Add now <a href="#" id="Add_Notes" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
                  @endforelse
@@ -58,7 +58,7 @@
  $(document).ready(function(){
      // click event on the basis of class of list-item
 
-       $(document).on('click', '.o_item', function(event){
+       $(document).on('click', '#Listitems', function(event){
                  // getting the text of list item on the basis of id
                    var text = $(this).text();
                    // getting the id from the outitem input field
@@ -144,9 +144,11 @@
        // function to delete items
        $('#delete').click(function(event){
                var id = $("#id").val();
-               //$.post('Delete', {'id':id,'_token':$('input[name=_token]').val()}, function(data){
-                     console.log(id);
-               //});
+               $.post('Delete', {'id':id,'_token':$('input[name=_token]').val()}, function(data){
+                      $('#tasks').load(location.href + ' #tasks');
+                      console.log(data);
+                      console.log(id);
+                });
                
 
        });
